@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Мета податоци -->
+  <title>Аптека Алфалек Куманово | Лекови, Витамини & Козметика</title>
+  <meta name="description" content="Аптека АЛФАЛЕК (Apteka ALFALEK) во Куманово нуди широк асортиман на лекови, витамини и козметика. Apteka Kumanovo, ALFALEK pharmacy. Фармација Куманово, професионален фармацевтски совет.">
+  <meta name="keywords" content="аптека, аптека Куманово, аптека Алфалек, Apteka ALFALEK, pharmacy Kumanovo, ALFALEK pharmacy, лекарства, медицински средства, витамини, козметика">
+  <meta name="author" content="Аптека АЛФАЛЕК">
+  <meta name="robots" content="index, follow">
+
+  <!-- Schema Markup за аптека -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Pharmacy",
+    "name": "Аптека АЛФАЛЕК (Apteka ALFALEK)",
+    "image": "https://cdn.pixabay.com/photo/2013/07/13/11/57/apothecary-159037_1280.png",
+    "description": "Аптека АЛФАЛЕК (Apteka ALFALEK) во Куманово - лекови, витамини и здравствена нега. Фармацевтски совет и најдобри цени.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ул. Јане Сандански бр. 45",
+      "addressLocality": "Куманово",
+      "addressRegion": "МК",
+      "postalCode": "1300",
+      "addressCountry": "MK"
+    },
+    "telephone": "+38931432004",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "21:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "08:00",
+        "closes": "21:00"
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #1e88e5;
+      --secondary: #388e3c;
+      --light-bg: #f5f9fa;
+      --white: #ffffff;
+      --shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      color: #333;
+      background-color: var(--white);
+    }
+    
+    header {
+      background: linear-gradient(135deg, #c8e6c9, #81c784);
+      text-align: center;
+      padding: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+    }
+    
+    header img {
+      width: 100px;
+      margin-right: 20px;
+      transition: transform 0.3s;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+    }
+    
+    header img:hover {
+      transform: scale(1.05);
+    }
+    
+    .site-title .small-title {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin: 0;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    .site-title .big-title {
+      font-size: 2.8rem;
+      color: var(--secondary);
+      margin: 5px 0 0 0;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    section {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-light {
+      background-color: var(--light-bg);
+      border-radius: 10px;
+      margin: 20px auto;
+      box-shadow: var(--shadow);
+    }
+    
+    h2 {
+      color: var(--secondary);
+      border-bottom: 3px solid #81c784;
+      padding-bottom: 10px;
+      font-weight: 700;
+      margin-top: 0;
+      font-size: 2rem;
+    }
+    
+    nav {
+      background-color: var(--primary);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 15px 0;
+      box-shadow: var(--shadow);
+    }
+    
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: var(--white);
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 8px 15px;
+      transition: all 0.3s;
+      border-radius: 5px;
+    }
+    
+    nav a:hover {
+      background-color: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+    
+    .price-link {
+      font-weight: bold;
+      text-decoration: underline;
+      color: var(--primary);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .price-link:hover {
+      color: #1565c0;
+    }
+    
+    #price-table-container {
+      margin-top: 20px;
+      position: relative;
+    }
+    
+    #loading-spinner {
+      text-align: center;
+      padding: 30px;
+      color: var(--primary);
+      display: none;
+    }
+    
+    #loading-spinner i {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    
+    #loading-spinner p {
+      margin-top: 10px;
+      font-weight: 600;
+    }
+    
+    #cenovnik-iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      border-radius: 8px;
+      overflow-y: auto;
+      box-shadow: var(--shadow);
+    }
+    
+    .close-price-table {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: var(--shadow);
+    }
+    
+    .faq-container {
+      margin-top: 20px;
+    }
+    
+    .faq-item {
+      margin-bottom: 15px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .faq-question {
+      background: var(--white);
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    
+    .faq-question h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+    
+    .faq-answer {
+      background: #f9f9f9;
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    }
+    
+    .faq-item.active .faq-answer {
+      padding: 15px 20px;
+      max-height: 300px;
+    }
+    
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+    
+    .faq-question i {
+      transition: transform 0.3s;
+    }
+    
+    .contact-form-container {
+      background-color: var(--white);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      margin-top: 30px;
+    }
+    
+    .contact-form h3 {
+      color: var(--secondary);
+      margin-top: 0;
+    }
+    
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 2px solid #e0e0e0;
+      border-radius: 6px;
+      font-family: inherit;
+    }
+    
+    .contact-form textarea {
+      height: 150px;
+    }
+    
+    .contact-form button {
+      background: var(--primary);
+      color: var(--white);
+      padding: 14px 25px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s;
+      width: 100%;
+      margin-top: 10px;
+    }
+    
+    .contact-form button:hover {
+      background: #1565c0;
+    }
+    
+    .facebook-link {
+      margin-top: 25px;
+      margin-bottom: 15px;
+    }
+    
+    .facebook-link a {
+      color: #1e88e5;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .facebook-link a:hover {
+      color: #0d47a1;
+    }
+    
+    .facebook-link i {
+      font-size: 2rem;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+    
+    .facebook-link span {
+      font-size: 1.2rem;
+      vertical-align: middle;
+    }
+    
+    .map iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    
+    footer {
+      background: linear-gradient(135deg, #c8e6c9, #81c784);
+      text-align: center;
+      padding: 25px;
+      margin-top: 40px;
+    }
+    
+    .update-info {
+      font-size: 0.9rem;
+      margin-top: 10px;
+      color: #2e7d32;
+    }
+    
+    #back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+      cursor: pointer;
+      display: none;
+      z-index: 99;
+      box-shadow: var(--shadow);
+    }
+    
+    #cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #f1f1f1;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+      display: none;
+    }
+    
+    #cookie-banner p {
+      margin: 0 0 10px 0;
+    }
+    
+    #accept-cookies {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+      }
+      
+      header img {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+      
+      .site-title .big-title {
+        font-size: 2.2rem;
+      }
+      
+      nav ul {
+        gap: 15px;
+      }
+      
+      #cenovnik-iframe {
+        height: 400px;
+      }
+      
+      .facebook-link {
+        margin-top: 20px;
+      }
+      
+      .facebook-link i {
+        font-size: 1.8rem;
+      }
+      
+      .facebook-link span {
+        font-size: 1.1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      nav ul {
+        gap: 10px;
+        padding: 10px 0;
+      }
+      
+      nav a {
+        font-size: 0.9rem;
+        padding: 5px 8px;
+      }
+      
+      #back-to-top {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://cdn.pixabay.com/photo/2013/07/13/11/57/apothecary-159037_1280.png" alt="Лого на Аптека АЛФАЛЕК" loading="lazy">
+    <div class="site-title">
+      <div class="small-title">Аптека</div>
+      <div class="big-title">АЛФАЛЕК <span style="display:none;">Apteka ALFALEK</span></div>
+    </div>
+  </header>
+
+  <nav aria-label="Главна навигација">
+    <ul role="menubar">
+      <li role="menuitem"><a href="#about">За нас</a></li>
+      <li role="menuitem"><a href="#cenovnik">Ценовник</a></li>
+      <li role="menuitem"><a href="#faq">FAQ</a></li>
+      <li role="menuitem"><a href="#links">Корисни линкови</a></li>
+      <li role="menuitem"><a href="#contact">Контакт</a></li>
+    </ul>
+  </nav>
+
+  <section id="about" class="section-light">
+    <h2>За нас</h2>
+    <p>Аптека <strong>АЛФАЛЕК</strong> како Приватна здравствена установа е основана во 2005 година и успешно работи под мотото <strong>"Ние се грижиме за вашето здравје"</strong>.</p>
+    <p>Грижата за здравјето на секој поединец кој влегува во аптека во потрага за препарат или стручен совет е суштината на добрата фармацевтска пракса.</p>
+    <p>Во секојдневната комуникација со пациентите и сите кои секојдневно влегуваат во нашата аптека, се обидуваме да воспоставиме активен индивидуален пристап, поттикнувајќи ги да донесат вистинска здрава одлука која ќе го подобри квалитетот на нивниот живот.</p>
+    <p>На тој начин сакаме да не препознаете како вистинско место за здравствена едукација, превенција и лечење, но и да ви понудиме производи кои ќе ви го олеснат и разубават секојдневието.</p>
+    <p>Целта кон која тежнееме е создавање аптека која е отворена кон Вас и Вашите потреби.</p>
+  </section>
+
+  <section id="cenovnik" class="section-light">
+    <h2>Ценовник</h2>
+    <p>Аптека АЛФАЛЕК нуди голема палета на лекови и ОТЦ препарати од домашни и странски произодители. Издаваме лекови на рецепт од позитивната листа на ФЗОМ, нудиме широка понуда на билни, витамински, козметички и дермокозметички препарати, медицински помагала за домашна употреба, чаеви, лековити билки и додатоци на исхрана, диететски производи, програма за деца и бебиња, средства за професионална нега, односно се што е потребно за квалитетен и здрав живот. За цените на производите може да се информирате <span id="open-price-table" class="price-link"><i class="fas fa-search"></i>тука</span>.</p>
+    
+    <div id="price-table-container" style="display: none;">
+      <button class="close-price-table" title="Затвори"><i class="fas fa-times"></i></button>
+      
+      <!-- Индикатор за вчитување -->
+      <div id="loading-spinner">
+        <i class="fas fa-circle-notch fa-spin"></i>
+        <p>Се вчитува ценовникот...</p>
+      </div>
+      
+      <iframe id="cenovnik-iframe" 
+        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSHAiuHHwUCN4C95ftMZtDD-DzMs40xmP-yehyDunrIE0F8zkJiCPHlQ_6wU_b0rg/pubhtml?widget=true&amp;headers=false">
+      </iframe>
+    </div>
+  </section>
+
+  <section id="faq" class="section-light">
+    <h2>Често поставувани прашања</h2>
+    <div class="faq-container">
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Дали издавате рецепти?</h3>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Не, аптеката не може да издава рецепти. Рецепти може да ги издаваат само лекарите. Сепак, ние можеме да ви дадеме совет за слободно продажни лекови кои не бараат рецепт.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Дали нудите услуга нарачување на лекови кои ги немате во понуда?</h3>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Да, по ваша побарувачка можеме да нарачаме лек кој моментално го немаме во понуда. Времето на чекање зависи од достапноста на лекот кај нашите добавувачи.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Дали нудите услуга достава до дом?</h3>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Моментално не нудиме услуга на достава до дом, но во иднина планираме да ја воведеме оваа услуга за редовни клиенти и за лица со посебни потреби.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Дали примате рецепти електронски?</h3>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Да, примаме електронски рецепти испратени од лекарите преку здравствената платформа. Можете да ни ја испратите рецептата на нашата е-пошта а лекот ќе го подигнете лично во аптеката.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Како да нарачам лек кој го немате во понуда?</h3>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Можете да не контактирате преку телефон или е-пошта со точното име на лекот и дозирањето. Ќе ви го потврдиме рокот на достапност и конечната цена. Нарачките се бесплатни и ги обезбедуваме во најкраток можен рок.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Дали нудите професионални консултации за употреба на лекови?</h3>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Да, нашите фармацевти нудат бесплатни консултации за правилна употреба на лекови, можни несакани ефекти и интеракции со други препарати. Консултациите се достапни во секое работно време, без потреба од закажување.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="links" class="section-light">
+    <h2>Корисни линкови</h2>
+    <ul>
+      <li>
+        <a href="https://zdravstvo.gov.mk/formirani-ceni-na-generichki-lekovi/" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-external-link-alt"></i> Цени на генерички лекови во РСМ
+        </a>
+      </li>
+      <li>
+        <a href="https://www.fva.org.mk/" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-external-link-alt"></i> Фармацевтска комора на Македонија
+        </a>
+      </li>
+      <li>
+        <a href="https://www.who.int/" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-external-link-alt"></i> Светска здравствена организација (WHO)
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Контакт и Локација</h2>
+    
+    <div style="display: flex; flex-wrap: wrap; gap: 30px;">
+      <div style="flex: 1; min-width: 300px;">
+        <p><i class="fas fa-map-marker-alt"></i> <strong>Адреса:</strong> ул. Јане Сандански бр. 45, Куманово</p>
+        <p><i class="fas fa-phone"></i> <strong>Телефон:</strong> 031/432-004</p>
+        <p><i class="fas fa-envelope"></i> <strong>Е-пошта:</strong> alfalek.ku@gmail.com</p>
+        <p><i class="fas fa-clock"></i> <strong>Работно време:</strong></p>
+        <ul style="margin-top: 5px; padding-left: 25px;">
+          <li>Понедeлник - Петок: 08:00 – 21:00</li>
+          <li>Сабота: 08:00 – 21:00</li>
+          <li>Недела: Затворено</li>
+        </ul>
+        
+        <div class="facebook-link">
+          <a href="https://www.facebook.com/aptekaALFALEK" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-facebook"></i>
+            <span>Следете не на Facebook</span>
+          </a>
+        </div>
+      </div>
+      
+      <div style="flex: 1; min-width: 300px;">
+        <div class="contact-form-container">
+          <h3>Испратете ни порака</h3>
+          <form class="contact-form" action="https://formsubmit.co/alfalek.ku@gmail.com" method="POST">
+            <input type="text" name="name" placeholder="Вашето име" required>
+            <input type="email" name="email" placeholder="Вашата е-пошта" required>
+            <textarea name="message" placeholder="Вашата порака" required></textarea>
+            <button type="submit">Испрати порака</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <div class="map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2945.775348463785!2d21.708688476639094!3d42.137015545710376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13544f4b4b9c8339%3A0x5837b7299408b718!2sApteka%20Alfalek!5e0!3m2!1sen!2smk!4v1713540565601!5m2!1sen!2smk" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; <span id="year"></span> <strong>Аптека АЛФАЛЕК</strong> - Сите права се задржани.</p>
+    <p class="update-info">Ажурирано на <span id="current-date"></span></p>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" title="Нагоре">↑</button>
+
+  <!-- Cookie Banner -->
+  <div id="cookie-banner">
+    <p>Оваа веб страница користи колачиња за подобро корисничко искуство. <a href="/privacy">Повеќе информации</a></p>
+    <button id="accept-cookies">Се согласувам</button>
+  </div>
+
+  <script>
+    // Функционалност за ценовникот
+    const priceLink = document.getElementById('open-price-table');
+    const priceContainer = document.getElementById('price-table-container');
+    const closeButton = document.querySelector('.close-price-table');
+    const cenovnikSection = document.getElementById('cenovnik');
+    const iframe = document.getElementById('cenovnik-iframe');
+    const spinner = document.getElementById('loading-spinner');
+    
+    priceLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      priceContainer.style.display = 'block';
+      spinner.style.display = 'block';
+      iframe.style.display = 'none';
+      
+      // Принудно превчитување на iframe
+      iframe.src = iframe.src;
+    });
+    
+    iframe.onload = function() {
+      spinner.style.display = 'none';
+      iframe.style.display = 'block';
+    };
+    
+    closeButton.addEventListener('click', function() {
+      priceContainer.style.display = 'none';
+    });
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting && priceContainer.style.display === 'block') {
+          priceContainer.style.display = 'none';
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    observer.observe(cenovnikSection);
+    
+    // Функционалност за FAQ
+    const faqSection = document.getElementById('faq');
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      question.addEventListener('click', () => {
+        item.classList.toggle('active');
+      });
+    });
+
+    const faqObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          faqItems.forEach(item => {
+            item.classList.remove('active');
+          });
+        }
+      });
+    }, { 
+      threshold: 0.1,
+      rootMargin: '-50px 0px 0px 0px'
+    });
+
+    faqObserver.observe(faqSection);
+
+    // Потврда за контакт форма
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Вашата порака е успешно испратена! Ќе ве контактираме наскоро.');
+      this.reset();
+    });
+
+    // Back to Top копче
+    window.onscroll = function() {
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        document.getElementById("back-to-top").style.display = "block";
+      } else {
+        document.getElementById("back-to-top").style.display = "none";
+      }
+    };
+    
+    document.getElementById("back-to-top").addEventListener("click", function() {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+
+    // Cookie banner
+    if (!localStorage.getItem('cookiesAccepted')) {
+      document.getElementById('cookie-banner').style.display = 'block';
+    }
+    
+    document.getElementById('accept-cookies').addEventListener('click', function() {
+      localStorage.setItem('cookiesAccepted', 'true');
+      document.getElementById('cookie-banner').style.display = 'none';
+    });
+
+    // Форматирање на датум
+    function formatMacedonianDate(date) {
+      const day = String(date.getDate()).padStart(2, '0');
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const year = date.getFullYear();
+      return `${day}.${month}.${year}`;
+    }
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    function updateCurrentDate() {
+      const now = new Date();
+      document.getElementById('current-date').textContent = 
+        formatMacedonianDate(now);
+    }
+
+    updateCurrentDate();
+
+    setInterval(() => {
+      const now = new Date();
+      if (now.getHours() === 0 && now.getMinutes() === 0) {
+        updateCurrentDate();
+      }
+    }, 60000);
+  </script>
+</body>
+</html>
